@@ -36,7 +36,7 @@ read about [https://en.wikipedia.org/wiki/Music\_tracker](https://en.wikipedia.o
     only for usage on linux!
     very poor code quality ))) 5 min written
 
-# WiKi pages
+# LINKS
 
 - [https://en.wikipedia.org/wiki/Music\_tracker](https://en.wikipedia.org/wiki/Music_tracker)
 - [https://en.wikipedia.org/wiki/Module\_file](https://en.wikipedia.org/wiki/Module_file)

@@ -75,7 +75,7 @@ exec perldoc => $0 if ( join "" => @ARGV ) =~ /-{1,2}h(elp)?/;
 
 `perldoc -o Markdown "$0" > "$0.md"`, exit 0
   if ( join "" => @ARGV ) =~ /--md/;
-`git add -A && git commit -m "$now" && git push`, exit 0
+`$0 --md; git add -A && git commit -m "$now" && git push`, exit 0
   if ( join "" => @ARGV ) =~ /--push/;
 
 ## code start there 
