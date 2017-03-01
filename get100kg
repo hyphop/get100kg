@@ -47,7 +47,9 @@ written for http://ai-radio.org music collection
 
 =cut 
 
-#perldoc -o Markdown ./get100kg > get100kg.md 
+# perldoc -o Markdown ./get100kg > get100kg.md 
+# now=`date`; git add -A && git commit -m "$now" && git push
+
 
 exec perldoc => $0 if ( join "" => @ARGV ) =~ /-{1,2}h(elp)?/;
 
