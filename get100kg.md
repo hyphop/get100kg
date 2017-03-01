@@ -1,10 +1,10 @@
 # ABOUT
 
-get top 100 tracks from http://keygenmusic.net
+get top 100 tracks from [http://keygenmusic.net](http://keygenmusic.net)
 unpack store range, + generate playlist.
-written for http://ai-radio.org music collection and
+written for [http://ai-radio.org](http://ai-radio.org) music collection and
 for everybody who like trackers music ! enjoy ). 
-read about https://en.wikipedia.org/wiki/Music\_tracker
+read about [https://en.wikipedia.org/wiki/Music\_tracker](https://en.wikipedia.org/wiki/Music_tracker)
 
 # USAGE
 
@@ -38,7 +38,8 @@ read about https://en.wikipedia.org/wiki/Music\_tracker
 
 # WiKi pages
 
-    https://en.wikipedia.org/wiki/Music_tracker
+- [https://en.wikipedia.org/wiki/Music\_tracker](https://en.wikipedia.org/wiki/Music_tracker)
+- [https://en.wikipedia.org/wiki/Module\_file](https://en.wikipedia.org/wiki/Module_file)
 
 # DEPS
 

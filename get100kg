@@ -2,13 +2,15 @@
 
 ## hyphop ##
 
+=pod 
+
 =head1 ABOUT
 
-get top 100 tracks from http://keygenmusic.net
+get top 100 tracks from L<http://keygenmusic.net>
 unpack store range, + generate playlist.
-written for http://ai-radio.org music collection and
+written for L<http://ai-radio.org> music collection and
 for everybody who like trackers music ! enjoy ). 
-read about https://en.wikipedia.org/wiki/Music_tracker
+read about L<https://en.wikipedia.org/wiki/Music_tracker>
 
 =head1 USAGE
 
@@ -42,7 +44,15 @@ read about https://en.wikipedia.org/wiki/Music_tracker
 
 =head1 WiKi pages
 
-    https://en.wikipedia.org/wiki/Music_tracker
+=over
+
+=item *
+L<https://en.wikipedia.org/wiki/Music_tracker>
+
+=item *
+L<https://en.wikipedia.org/wiki/Module_file>
+
+=back
 
 =head1 DEPS
 
