@@ -13,8 +13,8 @@ written for http://ai-radio.org music collection
     cd /tmp
     git clone https://github.com/hyphop/get100kg
     cd get100kg
-    
     ./get100kg
+
     ./get100kg --help
     ./get100kg --store
     ./get100kg top100.html
@@ -78,13 +78,8 @@ exec wget => $page_link => qw/-O top100.html/ if $ARGV[0] =~ /--store/;
 
 our $in = -f $ARGV[0] ? $ARGV[0] : "wget '$page_link' -O-|";
 
-warn "[i] get from $in\n";
 
 #exit 0;
-
-open IN, $in;
-
--d $_ || mkdir $_ for qw/top dl tmp music/;
 
 our $i = 1;
 
@@ -92,6 +87,18 @@ our %a = (
      "7z" => "7zr e",
      "rar" => "unrar x" 
 );
+
+for my $cmd ( sort keys %a ) {
+    my $a = (split / / => $a{$cmd})[0];
+    my $c = `which $a`;
+    die "[e] not found $a // try install it" unless $c;
+}
+
+#exit 0;
+
+warn "[i] get from $in\n";
+open IN, $in;
+-d $_ || mkdir $_ for qw/top dl tmp music/;
 
 open PLSTIN,  ">$pls_in";
 open PLST,    ">$pls";

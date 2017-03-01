@@ -9,8 +9,8 @@ written for http://ai-radio.org music collection
     cd /tmp
     git clone https://github.com/hyphop/get100kg
     cd get100kg
-    
     ./get100kg
+
     ./get100kg --help
     ./get100kg --store
     ./get100kg top100.html
