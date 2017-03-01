@@ -1,0 +1,156 @@
+#!/usr/bin/perl
+
+## hyphop ##
+
+=head1 ABOUT
+
+    get top 100 tracks from keygenmusic.net
+    unpack store range, + generate playlist
+    written for ai-radio.org music collection
+
+=head1 USAGE
+
+    get100kg
+    get100kg --help
+    get100kg --store
+    get100kg top100.html
+
+=head1 DIRS & FILES
+
+    dl		- downloads 
+    music	- unpacked tracks
+    top		- renamed tracks by rank
+    tmp		- temp dir for unpack
+
+=head1 NOTE
+    
+    only for usage on linux!
+    very poor code quality ))) 5 min written
+
+=head1 DEPS
+
+    wget 
+    unrar
+    7zr
+
+=cut 
+
+exec perldoc => $0 if ( join "" => @ARGV ) =~ /-{1,2}h(elp)?/;
+
+#wget http://keygenmusic.net/?page=vote&lang=en
+
+our $url = '';
+
+our $host   = "http://keygenmusic.net";
+our $pls    = "keygen.top100.m3u";
+our $pls_in = "music/.$pls";
+our $pls_in2= "top/.$pls";
+our $plsalt = "keygen.top100.ranked.m3u";
+
+our $page_link = "$host/?page=vote&lang=en";
+
+exec wget => $page_link => qw/-O top100.html/ if $ARGV[0] =~ /--store/;
+
+our $in = -f $ARGV[0] ? $ARGV[0] : "wget '$page_link' -O-|";
+
+warn "[i] get from $in\n";
+
+#exit 0;
+
+open IN, $in;
+
+-d $_ || mkdir $_ for qw/top dl tmp music/;
+
+our $i = 1;
+
+our %a = (
+     "7z" => "7zr e",
+     "rar" => "unrar x" 
+);
+
+open PLSTIN,  ">$pls_in";
+open PLST,    ">$pls";
+open PLSTIN2, ">$pls_in2";
+open PLSTALT, ">$plsalt";
+
+our $now = localtime();
+
+print $_ qq{
+;; ## hyphop ## // get100kg generated - $url
+;; $now
+
+} for ( PLST, PLSTIN, PLSTIN2, PLSTALT );
+
+sub filesfromdir{
+
+    #split /\r?\n/ => `ls -1 @_`
+
+    # same but on perl )
+
+    my @f;
+    my $r = opendir my $d, ( $_[0] or '.' );
+    #warn "[i] $r $!";
+    while ( my $f = readdir $d ) {
+	#warn "[d] $f\n";
+	push @f, $f if -f $f;
+    }
+    closedir $d;
+    #printf STDERR "%d files\n";
+
+    @f
+}
+
+chdir "tmp";
+
+while (<IN>) {
+    next unless m{([\"\'])(music/(.+?))\1};
+
+    #music/razor1911/Razor1911-SoldierOfFortune2intro.rar
+    #music/fff/FFF-BlindWriteSuite5.2.23.156crk.rar
+
+    $_ = $2;
+
+    m{(.+/)(.+)\.};
+    $path = $_;
+    $dir  = $1;
+    $name = $2;
+    $ext  = $';
+    $file = "$2.$'";
+
+    warn "$i: $path\n";
+
+    `$a{$ext} "../dl/$file"`;
+
+    for $kg ( filesfromdir ) {
+
+        #chomp($kg);
+
+        if ( $kg =~ /\.(xm|mod|it|s3m|ym)/i ) {
+            warn "[$i] $file => '$kg'\n";
+            my $m = "../music/$kg";
+            rename $kg, $m;
+            my $n = sprintf "%03d - %s", $i, $kg;
+            #symlink $m, $n;
+            link $m, "../top/$n";
+
+            print PLSTIN	"$kg\n";
+            print PLSTIN2	"$n\n";
+            print PLST 		"music/$kg\n";
+            print PLSTALT	"top/$n\n";
+
+            #system mv => $kg, "../music/";
+            #unlink $kg if /^\w/;
+        }
+        else {
+            warn "[$i] !!! $file => '$kg'\n";
+        }
+
+    }
+
+    `rm ../tmp/* 1>/dev/null 2>/dev/null`;
+
+    #<STDIN>;
+
+    $i++;
+}
+
