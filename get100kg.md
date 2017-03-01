@@ -3,7 +3,8 @@
 get top 100 tracks from http://keygenmusic.net
 unpack store range, + generate playlist.
 written for http://ai-radio.org music collection and
-for everybody who like trackers music ! enjoy )
+for everybody who like trackers music ! enjoy ). 
+read about https://en.wikipedia.org/wiki/Music\_tracker
 
 # USAGE
 
