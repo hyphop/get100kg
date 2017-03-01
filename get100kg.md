@@ -1,8 +1,8 @@
 # ABOUT
 
-    get top 100 tracks from keygenmusic.net
-    unpack store range, + generate playlist
-    written for ai-radio.org music collection
+get top 100 tracks from http://keygenmusic.net
+unpack store range, + generate playlist.
+written for http://ai-radio.org music collection
 
 # USAGE
 
