@@ -149,10 +149,13 @@ while (<IN>) {
     $ext  = $';
     $file = "$2.$'";
 
-    warn "$i: $path\n";
+    warn "$i: $host/$path - $file\n";
 
-    system wget => "$host/$path", "-O" , "dl/$file"
-	unless -f "dl/$file";
+#   next;
+
+    warn system wget => "$host/$path", "-O" , "../dl/$file"
+	unless -f "../dl/$file";
+    ;
 
     `$a{$ext} "../dl/$file"`;
 
