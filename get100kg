@@ -85,7 +85,8 @@ our $i = 1;
 
 our %a = (
      "7z" => "7zr e",
-     "rar" => "unrar x" 
+     "rar" => "unrar x",
+     "wget" => "wget" 
 );
 
 for my $cmd ( sort keys %a ) {
@@ -149,6 +150,9 @@ while (<IN>) {
     $file = "$2.$'";
 
     warn "$i: $path\n";
+
+    system wget => "$host/$path", "-O" , "dl/$file"
+	unless -f "dl/$file";
 
     `$a{$ext} "../dl/$file"`;
 
