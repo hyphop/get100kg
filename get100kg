@@ -10,17 +10,28 @@
 
 =head1 USAGE
 
-    get100kg
-    get100kg --help
-    get100kg --store
-    get100kg top100.html
+    cd /tmp
+    git clone https://github.com/hyphop/get100kg
+    cd get100kg
+    
+    ./get100kg
+    ./get100kg --help
+    ./get100kg --store
+    ./get100kg top100.html
 
-=head1 DIRS & FILES
+=head1 DIRS
 
     dl		- downloads 
     music	- unpacked tracks
     top		- renamed tracks by rank
     tmp		- temp dir for unpack
+
+=head1 PLAYLISTS
+
+    keygen.top100.m3u		
+    keygen.top100.ranked.m3u	
+    music/.keygen.top100.m3u	
+    top/.keygen.top100.m3u	
 
 =head1 NOTE
     
@@ -32,14 +43,17 @@
     wget 
     unrar
     7zr
+    perl
 
 =cut 
+
+#perldoc -o Markdown ./get100kg > get100kg.md 
 
 exec perldoc => $0 if ( join "" => @ARGV ) =~ /-{1,2}h(elp)?/;
 
 #wget http://keygenmusic.net/?page=vote&lang=en
 
-our $url = '';
+our $url = 'https://github.com/hyphop/get100kg';
 
 our $host   = "http://keygenmusic.net";
 our $pls    = "keygen.top100.m3u";
