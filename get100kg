@@ -47,11 +47,20 @@ written for http://ai-radio.org music collection
 
 =cut 
 
-# perldoc -o Markdown ./get100kg > get100kg.md 
-# now=`date`; git add -A && git commit -m "$now" && git push
 
+our $now = localtime();
 
 exec perldoc => $0 if ( join "" => @ARGV ) =~ /-{1,2}h(elp)?/;
+
+# perldoc -o Markdown ./get100kg > get100kg.md
+# now=`date`; git add -A && git commit -m "$now" && git push
+
+`perldoc -o Markdown "$0" > "$0.md"`, exit 0
+  if ( join "" => @ARGV ) =~ /--md/;
+`git add -A && git commit -m "$now" && git push`, exit 0
+  if ( join "" => @ARGV ) =~ /--push/;
+
+## code start there 
 
 #wget http://keygenmusic.net/?page=vote&lang=en
 
@@ -89,7 +98,6 @@ open PLST,    ">$pls";
 open PLSTIN2, ">$pls_in2";
 open PLSTALT, ">$plsalt";
 
-our $now = localtime();
 
 print $_ qq{
 ;; ## hyphop ## // get100kg generated - $url
