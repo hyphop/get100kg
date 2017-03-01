@@ -35,6 +35,10 @@ for everybody who like trackers music ! enjoy )
     only for usage on linux!
     very poor code quality ))) 5 min written
 
+# WiKi pages
+
+    https://en.wikipedia.org/wiki/Music_tracker
+
 # DEPS
 
     wget 
