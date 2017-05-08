@@ -59,7 +59,7 @@ L<https://en.wikipedia.org/wiki/Module_file>
 =head1 DEPS
 
     wget 
-    unrar
+    # unrar
     7zr
     perl
 
@@ -75,6 +75,8 @@ exec perldoc => $0 if ( join "" => @ARGV ) =~ /-{1,2}h(elp)?/;
 
 `perldoc -o Markdown "$0" > "$0.md"`, exit 0
   if ( join "" => @ARGV ) =~ /--md/;
+`perldoc -o Text "$0" > "$0.txt"`, exit 0
+  if ( join "" => @ARGV ) =~ /--text/;
 `$0 --md; git add -A && git commit -m "$now" && git push`, exit 0
   if ( join "" => @ARGV ) =~ /--push/;
 
@@ -102,8 +104,9 @@ our $in = -f $ARGV[0] ? $ARGV[0] : "wget '$page_link' -O-|";
 our $i = 1;
 
 our %a = (
-     "7z" => "7zr e",
-     "rar" => "unrar x",
+     "7z" => "7zr e -bd -y",
+     "rar" => "7zr e -bd -y",
+#     "rar" => "unrar x",
      "wget" => "wget" 
 );
 

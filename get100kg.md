@@ -44,6 +44,6 @@ read about [https://en.wikipedia.org/wiki/Music\_tracker](https://en.wikipedia.o
 # DEPS
 
     wget 
-    unrar
+    # unrar
     7zr
     perl
