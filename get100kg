@@ -104,8 +104,8 @@ our $in = -f $ARGV[0] ? $ARGV[0] : "wget '$page_link' -O-|";
 our $i = 1;
 
 our %a = (
-     "7z" => "7zr e -bd -y",
-     "rar" => "7zr e -bd -y",
+     "7z" => "7z e",
+     "rar" => "7z e",
 #     "rar" => "unrar x",
      "wget" => "wget" 
 );
