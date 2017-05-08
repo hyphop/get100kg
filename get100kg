@@ -113,7 +113,7 @@ for my $cmd ( sort keys %a ) {
     die "[e] not found $a // try install it" unless $c;
 }
 
-exit 0;
+#exit 0;
 
 warn "[i] get from $in\n";
 open IN, $in;
